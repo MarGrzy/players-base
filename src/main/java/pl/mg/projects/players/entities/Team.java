@@ -1,8 +1,7 @@
 package pl.mg.projects.players.entities;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @Entity
 @Table(name = "team")
@@ -15,12 +14,7 @@ public class Team {
     private String teamName;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.PERSIST)
-    @MapKey(name = "name")
-    private Map<String, Player> players;
-
-    public Team() {
-        players = new HashMap<String, Player>();
-    }
+    private List<Player> players;
 
     public Long getId() {
         return id;
@@ -37,16 +31,4 @@ public class Team {
     public void setTeamName(String teamName) {
         this.teamName = teamName;
     }
-
-    public void addPlayer(Player player) {
-        if (!getPlayers().containsKey(player.getName())) {
-            getPlayers().put(player.getName(), player);
-            if (player.getTeam() != null) {
-                player.getTeam().getPlayers().remove(player.getName());
-            }
-            player.setTeam(this);
-        }
-    }
-
-    public Map<String, Player> getPlayers() { return players; }
 }

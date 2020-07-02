@@ -14,6 +14,7 @@ public class Player {
     private String position;
 
     @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 
     public long getId() {

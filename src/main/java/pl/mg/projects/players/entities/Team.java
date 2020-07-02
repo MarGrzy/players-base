@@ -8,9 +8,10 @@ import java.util.List;
 public class Team {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @Column(name = "teamname")
     private String teamName;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.PERSIST)

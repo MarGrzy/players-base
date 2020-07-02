@@ -21,12 +21,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.userService = userService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.cors().and().csrf().disable()
-//                .authorizeRequests()
-//    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable()
+                .authorizeRequests().antMatchers("/").permitAll().and()
+                .authorizeRequests().antMatchers("/console/**").permitAll();
+        http.headers().frameOptions().disable();
+    }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {

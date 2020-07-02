@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import pl.mg.projects.players.dto.AuthorizationDto;
 
 @EnableJpaRepositories("pl.mg.projects.players")
 @EntityScan("pl.mg.projects.players.entities")
@@ -19,5 +20,8 @@ public class PlayersBaseApp {
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
+    } @Bean
+    public AuthorizationDto authorizationDto(){
+        return new AuthorizationDto();
     }
 }

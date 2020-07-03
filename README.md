@@ -6,7 +6,7 @@
 
 2) Project is under development
 
-![BasketballLogo](https://cdn.pixabay.com/photo/2013/07/12/14/46/basketball-148766_960_720.png)
+<img src="https://cdn.pixabay.com/photo/2013/07/12/14/46/basketball-148766_960_720.png" alt="BasketballLogo" width="200"/>
 
 ### <ins>Author</ins>
 Marcin Grzymowicz

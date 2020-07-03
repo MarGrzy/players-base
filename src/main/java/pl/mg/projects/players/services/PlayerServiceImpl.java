@@ -21,9 +21,10 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Player addPlayer(String name, String position, Team team) {
+    public Player addPlayer(Long id, String name, String position, Team team) {
 
         Player newPlayer = new Player();
+        newPlayer.setId(id);
         newPlayer.setName(name);
         newPlayer.setPosition(position);
         newPlayer.setTeam(team);

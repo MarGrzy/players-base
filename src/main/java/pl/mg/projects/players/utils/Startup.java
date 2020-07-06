@@ -5,12 +5,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.mg.projects.players.dto.AuthorizationDto;
 import pl.mg.projects.players.entities.Team;
+import pl.mg.projects.players.repositories.PlayerRepository;
 import pl.mg.projects.players.repositories.TeamRepository;
 import pl.mg.projects.players.services.PlayerService;
 import pl.mg.projects.players.services.TeamService;
 import pl.mg.projects.players.services.UserService;
 
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Component
 public class Startup implements CommandLineRunner {
@@ -21,14 +25,16 @@ public class Startup implements CommandLineRunner {
     private final AuthorizationDto authorizationDto;
 
     private final TeamRepository teamRepository;
+    private final PlayerRepository playerRepository;
 
     @Autowired
-    public Startup(UserService userService, TeamService teamService, PlayerService playerService, AuthorizationDto authorizationDto, TeamRepository teamRepository) {
+    public Startup(UserService userService, TeamService teamService, PlayerService playerService, AuthorizationDto authorizationDto, TeamRepository teamRepository, PlayerRepository playerRepository) {
         this.userService = userService;
         this.teamService = teamService;
         this.playerService = playerService;
         this.authorizationDto = authorizationDto;
         this.teamRepository = teamRepository;
+        this.playerRepository = playerRepository;
     }
 
     @Override
@@ -38,9 +44,9 @@ public class Startup implements CommandLineRunner {
         authorizationDto.setPassword("dave");
         userService.createUser(authorizationDto);
 
-        Team boston = teamRepository.getOne(2l);
+        Team boston = teamRepository.getOne(2L);
 
-        playerService.addPlayer(5l,"Jayson Tatum", "SF / PF", boston);
+        playerService.addPlayer(5L,"Jayson Tatum", "SF / PF", boston);
 
         List<String> allPlayers = playerService.getAllPlayers();
         for (String player : allPlayers) {

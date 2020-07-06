@@ -46,4 +46,6 @@ public class UserService implements UserDetailsService {
             return true;
         } else return false;
     }
+
+    public Optional<User> getByUsername(String newUsername) { return userRepository.getByUserName(newUsername); }
 }

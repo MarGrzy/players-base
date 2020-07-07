@@ -27,7 +27,7 @@ public class UserController {
 
     @PutMapping(path = "/register")
     public ResponseEntity<String> register(@RequestBody AuthorizationDto authorizationDto, HttpServletRequest request) {
-        Optional<User> userByNewUsername = userService.getByUsername(authorizationDto.getUserName());
+        Optional<User> userByNewUsername = userService.getByUsername(authorizationDto.getUsername());
         if (userByNewUsername.isPresent()) return ResponseEntity.status(HttpStatus.IM_USED).build();
         if (this.userService.createUser(authorizationDto)) {
             return ResponseEntity.status(HttpStatus.CREATED).build();

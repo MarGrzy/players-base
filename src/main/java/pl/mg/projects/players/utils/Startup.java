@@ -11,36 +11,29 @@ import pl.mg.projects.players.services.PlayerService;
 import pl.mg.projects.players.services.TeamService;
 import pl.mg.projects.players.services.UserService;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Component
 public class Startup implements CommandLineRunner {
 
     private final UserService userService;
-    private final TeamService teamService;
     private final PlayerService playerService;
     private final AuthorizationDto authorizationDto;
 
     private final TeamRepository teamRepository;
-    private final PlayerRepository playerRepository;
 
     @Autowired
-    public Startup(UserService userService, TeamService teamService, PlayerService playerService, AuthorizationDto authorizationDto, TeamRepository teamRepository, PlayerRepository playerRepository) {
+    public Startup(UserService userService, PlayerService playerService, AuthorizationDto authorizationDto, TeamRepository teamRepository) {
         this.userService = userService;
-        this.teamService = teamService;
         this.playerService = playerService;
         this.authorizationDto = authorizationDto;
         this.teamRepository = teamRepository;
-        this.playerRepository = playerRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
-        authorizationDto.setUserName("Dave");
+        authorizationDto.setUsername("Dave");
         authorizationDto.setPassword("dave");
         userService.createUser(authorizationDto);
 

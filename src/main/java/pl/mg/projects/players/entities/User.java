@@ -12,10 +12,13 @@ public class User {
     private Long id;
 
     @Column(unique = true, nullable = false, name = "username")
-    private String userName;
+    private String username;
 
     @Column(nullable = false)
     private String password;
+
+    @Transient
+    private String authorities;
 
     @OneToMany
     private List<Player> players;
@@ -28,12 +31,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -42,5 +45,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
     }
 }

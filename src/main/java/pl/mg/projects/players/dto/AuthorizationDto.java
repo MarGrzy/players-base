@@ -1,18 +1,18 @@
 package pl.mg.projects.players.dto;
 
 public class AuthorizationDto {
-    private String userName;
+    private String username;
     private String password;
 
     public AuthorizationDto() {
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

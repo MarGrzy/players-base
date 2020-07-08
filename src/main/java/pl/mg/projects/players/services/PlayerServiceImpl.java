@@ -1,7 +1,6 @@
 package pl.mg.projects.players.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.mg.projects.players.entities.Player;
 import pl.mg.projects.players.entities.Team;
@@ -21,14 +20,14 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Player addPlayer(String name, String position, Team team) {
+    public void addPlayer(Long id, String name, String position, Team team) {
 
         Player newPlayer = new Player();
+        newPlayer.setId(id);
         newPlayer.setName(name);
         newPlayer.setPosition(position);
         newPlayer.setTeam(team);
         playerRepository.save(newPlayer);
-        return newPlayer;
     }
 
     @Override

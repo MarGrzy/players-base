@@ -5,10 +5,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import pl.mg.projects.players.entities.Team;
 
+import java.util.List;
+
 
 public interface TeamRepository extends JpaRepository<Team, Long> {
 
-    Page<Team> getAllBy(Pageable pageable);
+    List<Team> getAllBy();
 
     Page<Team> getAllByTeamName(String teamName, Pageable pageable);
 }

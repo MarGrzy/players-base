@@ -14,7 +14,7 @@ public class Team {
     @Column(name = "teamname")
     private String teamName;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<Player> players;
 
     public Long getId() {

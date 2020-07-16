@@ -10,7 +10,8 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Column(name = "playername")
+    private String playerName;
     private String position;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -25,12 +26,12 @@ public class Player {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPlayerName() {
+        return playerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPlayerName(String name) {
+        this.playerName = name;
     }
 
     public String getPosition() {

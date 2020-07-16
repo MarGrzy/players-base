@@ -15,7 +15,7 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     Page<Player> getAllBy(Pageable pageable);
 
-    Page<Player> getAllByNameStartsWith(Pageable pageable, String name);
+    Page<Player> getAllByPlayerNameStartsWith(Pageable pageable, String playerName);
 
     Page<Player> getAllByPosition(Pageable pageable, String position);
 
@@ -23,7 +23,7 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     Page<Player> getAllByTeamOrderByTeam(Team team, Pageable pageTeam);
 
-    Page<Player> getAllByTeamAndNameStartsWith(Team team, String name, Pageable pageTeam);
+    Page<Player> getAllByTeamAndPlayerNameStartsWith(Team team, String playerName, Pageable pageTeam);
 
     Page<Player> getAllByTeamAndPosition(Team team, String position, Pageable pageTeam);
 }

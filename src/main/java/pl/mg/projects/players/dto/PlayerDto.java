@@ -7,13 +7,13 @@ public class PlayerDto {
 
     private Long id;
 
-    private String name;
+    private String playerName;
 
     private String position;
 
-    public PlayerDto(Long id, String name, String position) {
+    public PlayerDto(Long id, String playerName, String position) {
         this.id = id;
-        this.name = name;
+        this.playerName = playerName;
         this.position = position;
     }
 
@@ -25,12 +25,12 @@ public class PlayerDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPlayerName() {
+        return playerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
     public String getPosition() {

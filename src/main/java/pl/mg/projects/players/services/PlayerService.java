@@ -9,18 +9,18 @@ import pl.mg.projects.players.entities.Team;
 import java.util.List;
 
 public interface PlayerService {
-    void addPlayer(Long id, String name, String position, Team team);
+    void addPlayer(Long id, String playerName, String position, Team team);
     List<String> getAllPlayers();
 
     List<PlayerDto> mapPlayerEntityToDto(Page<Player> allPlayers);
 
     List<String> getAllPlayersOfTeam(Team team);
 
-    PaginationDto<PlayerDto> findByName(Integer perPage, Integer page, SortField sortField, Direction direction, String playerName);
+    PaginationDto<PlayerDto> findByPlayerName(Integer perPage, Integer page, SortField sortField, Direction direction, String playerName);
 
     PaginationDto<PlayerDto> findByTeam(Integer perPage, Integer page, SortField sortField, Direction direction, Team team);
 
-    PaginationDto<PlayerDto> findByPosition(Integer perPage, Integer page, SortField sortField, Direction direction, String playerPosition);
+    PaginationDto<PlayerDto> findByPosition(Integer perPage, Integer page, SortField sortField, Direction direction, String position);
 
     Pageable createPageRequest(Integer perPage, Integer page, SortField sortField, Direction direction);
 }

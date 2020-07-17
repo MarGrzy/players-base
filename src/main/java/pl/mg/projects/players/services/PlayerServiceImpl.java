@@ -99,7 +99,7 @@ public class PlayerServiceImpl implements PlayerService {
         }
         if (sortField.equals(SortField.teamName)) {
             pageRequest = PageRequest.of(page, perPage, sortDirection, "teamName");
-        } else if (sortField.equals(SortField.playerPosition)) {
+        } else if (sortField.equals(SortField.position)) {
             pageRequest = PageRequest.of(page, perPage, sortDirection, "position");
         } else {
             pageRequest = PageRequest.of(page, perPage, sortDirection, "playerName");

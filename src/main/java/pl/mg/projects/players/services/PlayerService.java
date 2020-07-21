@@ -18,7 +18,7 @@ public interface PlayerService {
 
     PaginationDto<PlayerDto> findByPlayerName(Integer perPage, Integer page, SortField sortField, Direction direction, String playerName);
 
-    PaginationDto<PlayerDto> findByTeam(Integer perPage, Integer page, SortField sortField, Direction direction, Team team);
+    PaginationDto<PlayerDto> findByTeamName(Integer perPage, Integer page, SortField sortField, Direction direction, String teamName);
 
     PaginationDto<PlayerDto> findByPosition(Integer perPage, Integer page, SortField sortField, Direction direction, String position);
 

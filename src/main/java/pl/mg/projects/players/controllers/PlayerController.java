@@ -32,7 +32,7 @@ public class PlayerController {
     public ResponseEntity<PaginationDto<PlayerDto>> getAllPlayers(@RequestParam(name = "perPage") Integer perPage,
                                                                   @RequestParam(name = "page") Integer page,
                                                                   @RequestParam(name = "sortBy") SortField sortField,
-                                                                  @RequestParam(name = "team", required = false) Team team,
+                                                                  @RequestParam(name = "teamName", required = false) String teamName,
                                                                   @RequestParam(name = "position", required = false) String position,
                                                                   @RequestParam(name = "playerName", required = false) String playerName,
                                                                   @RequestParam(name = "direction") Direction direction) {
@@ -45,7 +45,7 @@ public class PlayerController {
             if (players.getContent().isEmpty()) return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
             else return ResponseEntity.status(HttpStatus.OK).body(players);
         } else {
-            PaginationDto<PlayerDto> players = playerService.findByTeam(perPage, page, sortField, direction, team);
+            PaginationDto<PlayerDto> players = playerService.findByTeamName(perPage, page, sortField, direction, teamName);
             if (players.getContent().isEmpty()) return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
             else return ResponseEntity.status(HttpStatus.OK).body(players);
         }

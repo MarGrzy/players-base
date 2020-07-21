@@ -75,9 +75,9 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public PaginationDto<PlayerDto> findByTeam(Integer perPage, Integer page, SortField sortField, Direction direction, Team team) {
+    public PaginationDto<PlayerDto> findByTeamName(Integer perPage, Integer page, SortField sortField, Direction direction, String teamName) {
         Pageable pageRequest = createPageRequest(perPage, page, sortField, direction);
-        List<PlayerDto> responseDtoList = mapPlayerEntityToDto(playerRepository.findAllByTeamOrderByTeam(team, pageRequest));
+        List<PlayerDto> responseDtoList = mapPlayerEntityToDto(playerRepository.findAllByTeam_TeamNameStartsWith(teamName, pageRequest));
         return new PaginationDto<>(responseDtoList, (long) responseDtoList.size());
     }
 
@@ -102,7 +102,7 @@ public class PlayerServiceImpl implements PlayerService {
         } else if (sortField.equals(SortField.position)) {
             pageRequest = PageRequest.of(page, perPage, sortDirection, "position");
         } else {
-            pageRequest = PageRequest.of(page, perPage, sortDirection, "teamName");
+            pageRequest = PageRequest.of(page, perPage, sortDirection, "team.teamName");
         }
         return pageRequest;
     }

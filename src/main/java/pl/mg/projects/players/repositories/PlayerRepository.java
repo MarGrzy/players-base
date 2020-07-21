@@ -15,13 +15,13 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     Page<Player> getAllBy(Pageable pageable);
 
-    Page<Player> getAllByPlayerNameStartsWith(Pageable pageable, String playerName);
+    Page<Player> findAllByPlayerNameStartsWith(String playerName, Pageable pageable);
 
-    Page<Player> getAllByPosition(Pageable pageable, String position);
+    Page<Player> findAllByPosition(String position, Pageable pageable);
 
     List<Player> getAllByTeam(Team team);
 
-    Page<Player> getAllByTeamOrderByTeam(Pageable pageTeam, Team team);
+    Page<Player> findAllByTeamOrderByTeam(Team team, Pageable pageTeam);
 
     Page<Player> getAllByTeamAndPlayerNameStartsWith(Team team, String playerName, Pageable pageTeam);
 

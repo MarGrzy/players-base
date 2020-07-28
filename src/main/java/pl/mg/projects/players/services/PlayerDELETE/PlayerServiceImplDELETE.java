@@ -1,8 +1,8 @@
-package pl.mg.projects.players.services;
+package pl.mg.projects.players.services.PlayerDELETE;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.mg.projects.players.entities.Player;
+import pl.mg.projects.players.dto.PlayerDto;
 import pl.mg.projects.players.repositories.PlayerRepository;
 
 @Service
@@ -14,7 +14,7 @@ public class PlayerServiceImplDELETE implements PlayerServiceDELETE {
     public PlayerServiceImplDELETE(PlayerRepository playerRepository) { this.playerRepository = playerRepository; }
 
     @Override
-    public boolean delete(Long id, Player player) {
+    public boolean delete(Long id, PlayerDto player) {
         if (playerRepository.existsById(id)) {
             playerRepository.deleteById(id);
             return true;

@@ -4,17 +4,12 @@ package pl.mg.projects.players.controllers
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
-import pl.mg.projects.players.dto.Direction
-import pl.mg.projects.players.dto.SortField
 import pl.mg.projects.players.entities.Player
 import pl.mg.projects.players.entities.Team
-import pl.mg.projects.players.services.PlayerService
+import pl.mg.projects.players.services.PlayerGET.PlayerService
 import spock.lang.Specification
 
 @SpringBootTest

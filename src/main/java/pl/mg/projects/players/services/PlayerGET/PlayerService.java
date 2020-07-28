@@ -1,4 +1,4 @@
-package pl.mg.projects.players.services;
+package pl.mg.projects.players.services.PlayerGET;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,7 +9,7 @@ import pl.mg.projects.players.entities.Team;
 import java.util.List;
 
 public interface PlayerService {
-    void addPlayer(Long id, String playerName, String position, Team team);
+
     List<String> getAllPlayers();
 
     List<PlayerDto> mapPlayerEntityToDto(Page<Player> allPlayers);

@@ -8,9 +8,7 @@ import pl.mg.projects.players.dto.Direction;
 import pl.mg.projects.players.dto.PaginationDto;
 import pl.mg.projects.players.dto.PlayerDto;
 import pl.mg.projects.players.dto.SortField;
-import pl.mg.projects.players.entities.Team;
-import pl.mg.projects.players.services.PlayerService;
-import pl.mg.projects.players.services.TeamService;
+import pl.mg.projects.players.services.PlayerGET.PlayerService;
 
 import java.util.Objects;
 

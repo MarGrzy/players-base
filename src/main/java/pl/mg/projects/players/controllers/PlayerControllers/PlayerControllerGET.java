@@ -8,9 +8,11 @@ import pl.mg.projects.players.dto.Direction;
 import pl.mg.projects.players.dto.PaginationDto;
 import pl.mg.projects.players.dto.PlayerDto;
 import pl.mg.projects.players.dto.SortField;
+import pl.mg.projects.players.services.exceptions.PlayerNotFoundException;
 import pl.mg.projects.players.services.playerServices.playerGET.PlayerService;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/player")
@@ -45,6 +47,14 @@ public class PlayerControllerGET {
             if (players.getContent().isEmpty()) return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
             else return ResponseEntity.status(HttpStatus.OK).body(players);
         }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PlayerDto> getOnePlayer(@PathVariable Long id) throws PlayerNotFoundException {
+        if (Objects.nonNull(id)) {
+            PlayerDto chosenPlayer = playerService.getOnePlayer(id);
+            return ResponseEntity.status(HttpStatus.OK).body(chosenPlayer);
+        } else return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 }
 

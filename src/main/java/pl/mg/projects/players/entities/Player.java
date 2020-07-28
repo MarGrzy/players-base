@@ -1,7 +1,5 @@
 package pl.mg.projects.players.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 
 @Entity
@@ -20,9 +18,7 @@ public class Player {
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 
-    public long getId() {
-        return id;
-    }
+    public long getId() { return id; }
 
     public void setId(long id) {
         this.id = id;

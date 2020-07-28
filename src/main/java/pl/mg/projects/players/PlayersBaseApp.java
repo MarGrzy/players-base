@@ -20,7 +20,8 @@ public class PlayersBaseApp {
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
-    } @Bean
+    }
+    @Bean
     public AuthorizationDto authorizationDto(){
         return new AuthorizationDto();
     }

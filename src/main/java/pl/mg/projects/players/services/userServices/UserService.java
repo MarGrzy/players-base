@@ -1,4 +1,4 @@
-package pl.mg.projects.players.services;
+package pl.mg.projects.players.services.userServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

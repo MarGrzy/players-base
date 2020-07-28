@@ -1,4 +1,4 @@
-package pl.mg.projects.players.services.PlayerGET;
+package pl.mg.projects.players.services.playerServices.playerGET;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,23 +13,34 @@ import pl.mg.projects.players.dto.SortField;
 import pl.mg.projects.players.entities.Player;
 import pl.mg.projects.players.entities.Team;
 import pl.mg.projects.players.repositories.PlayerRepository;
-import pl.mg.projects.players.services.PlayerGET.PlayerService;
+import pl.mg.projects.players.services.mappers.PlayerMapper;
+import pl.mg.projects.players.services.exceptions.PlayerNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
 
     private final PlayerRepository playerRepository;
+    private final PlayerMapper playerMapper;
 
     @Autowired
-    public PlayerServiceImpl(PlayerRepository playerRepository) {
+    public PlayerServiceImpl(PlayerRepository playerRepository, PlayerMapper playerMapper) {
         this.playerRepository = playerRepository;
+        this.playerMapper = playerMapper;
     }
 
 
+    @Override
+    public PlayerDto getOnePlayer(Long id) throws PlayerNotFoundException {
+        Optional<Player> chosenPlayer = playerRepository.findById(id);
+        if (chosenPlayer.isPresent()) {
+            return playerMapper.toPlayerDTO(chosenPlayer.get());
+        } else throw new PlayerNotFoundException("Player not found in database!");
+    }
 
     @Override
     public List<String> getAllPlayers() {

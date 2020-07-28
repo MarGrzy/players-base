@@ -1,5 +1,7 @@
 package pl.mg.projects.players.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +16,7 @@ public class Player {
     private String playerName;
     private String position;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 

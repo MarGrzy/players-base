@@ -20,12 +20,10 @@ public class PlayerController {
 
     private final PlayerService playerService;
 
-    private final TeamService teamService;
 
     @Autowired
-    public PlayerController(PlayerService playerService, TeamService teamService) {
+    public PlayerController(PlayerService playerService) {
         this.playerService = playerService;
-        this.teamService = teamService;
     }
 
     @GetMapping
@@ -51,3 +49,5 @@ public class PlayerController {
         }
     }
 }
+
+

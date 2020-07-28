@@ -5,13 +5,15 @@ import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
 @SpringBootTest
-class TeamControllerSpec extends Specification {
+class LoadContextTest extends Specification {
 
     @Autowired (required = false)
-    private TeamController teamController
+    private PlayerController playerController
+
+    // integration test - check if all Beans in application context are created
 
     def "when context is loaded then all expected beans are created"() {
-        expect: "the TeamController is created"
-        TeamController
+        expect: "the PlayerController is created"
+        PlayerController
     }
 }

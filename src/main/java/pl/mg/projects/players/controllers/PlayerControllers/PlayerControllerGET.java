@@ -1,4 +1,4 @@
-package pl.mg.projects.players.controllers;
+package pl.mg.projects.players.controllers.PlayerControllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,13 +14,13 @@ import java.util.Objects;
 
 @RestController
 @RequestMapping(path = "/player")
-public class PlayerController {
+public class PlayerControllerGET {
 
     private final PlayerService playerService;
 
 
     @Autowired
-    public PlayerController(PlayerService playerService) {
+    public PlayerControllerGET(PlayerService playerService) {
         this.playerService = playerService;
     }
 

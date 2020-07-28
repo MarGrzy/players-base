@@ -56,7 +56,7 @@ public class PlayerServiceImpl implements PlayerService {
     public List<PlayerDto> mapPlayerEntityToDto(Page<Player> allPlayers) {
         return allPlayers.getContent()
                 .stream()
-                .map(p -> new PlayerDto(p.getId(), p.getPlayerName(), p.getPosition()))
+                .map(p -> new PlayerDto(p.getId(), p.getPlayerName(), p.getPosition(), p.getTeam()))
                 .collect(Collectors.toList());
     }
 

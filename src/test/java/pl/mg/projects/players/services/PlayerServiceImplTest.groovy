@@ -4,8 +4,7 @@ package pl.mg.projects.players.services
 import org.springframework.beans.factory.annotation.Autowired
 import pl.mg.projects.players.entities.Team
 import pl.mg.projects.players.repositories.PlayerRepository
-import pl.mg.projects.players.services.PlayerGET.PlayerService
-import pl.mg.projects.players.services.PlayerGET.PlayerServiceImpl
+import pl.mg.projects.players.services.playerServices.playerGET.PlayerService
 import spock.lang.Specification
 
 class PlayerServiceImplTest extends Specification {

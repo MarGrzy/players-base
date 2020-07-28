@@ -1,24 +1,24 @@
 package pl.mg.projects.players.controllers
 
-
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import pl.mg.projects.players.controllers.PlayerControllers.PlayerControllerGET
 import pl.mg.projects.players.entities.Player
 import pl.mg.projects.players.entities.Team
-import pl.mg.projects.players.services.PlayerGET.PlayerService
+import pl.mg.projects.players.services.playerServices.playerGET.PlayerService
 import spock.lang.Specification
 
 @SpringBootTest
-class PlayerControllerSpec extends Specification {
+class PlayerControllerGETSpec extends Specification {
 
     // initial setup and variables
 
     @Autowired(required = false)
-    private PlayerController playerController
+    private PlayerControllerGET playerController
     private PlayerService playerService
 
     private MockMvc mockMvc
@@ -43,7 +43,7 @@ class PlayerControllerSpec extends Specification {
 
     void setup() {
         playerService = Mock(PlayerService.class)
-        playerController = Mock(playerController.class as Class<Object>) as PlayerController
+        playerController = Mock(playerController.class as Class<Object>) as PlayerControllerGET
         mockMvc = MockMvcBuilders
                 .standaloneSetup(playerController)
                 .alwaysDo(MockMvcResultHandlers.print())

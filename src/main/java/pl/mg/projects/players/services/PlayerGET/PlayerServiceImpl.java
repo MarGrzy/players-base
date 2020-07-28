@@ -1,4 +1,4 @@
-package pl.mg.projects.players.services;
+package pl.mg.projects.players.services.PlayerGET;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +13,7 @@ import pl.mg.projects.players.dto.SortField;
 import pl.mg.projects.players.entities.Player;
 import pl.mg.projects.players.entities.Team;
 import pl.mg.projects.players.repositories.PlayerRepository;
+import pl.mg.projects.players.services.PlayerGET.PlayerService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,16 +29,7 @@ public class PlayerServiceImpl implements PlayerService {
         this.playerRepository = playerRepository;
     }
 
-    @Override
-    public void addPlayer(Long id, String playerName, String position, Team team) {
 
-        Player newPlayer = new Player();
-        newPlayer.setId(id);
-        newPlayer.setPlayerName(playerName);
-        newPlayer.setPosition(position);
-        newPlayer.setTeam(team);
-        playerRepository.save(newPlayer);
-    }
 
     @Override
     public List<String> getAllPlayers() {

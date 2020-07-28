@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.mg.projects.players.dto.AuthorizationDto;
 import pl.mg.projects.players.entities.User;
-import pl.mg.projects.players.services.UserService;
+import pl.mg.projects.players.services.userServices.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;

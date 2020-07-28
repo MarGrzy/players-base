@@ -1,4 +1,4 @@
-package pl.mg.projects.players.services.PlayerPOST;
+package pl.mg.projects.players.services.playerServices.playerPOST;
 
 import pl.mg.projects.players.entities.Player;
 import pl.mg.projects.players.entities.Team;

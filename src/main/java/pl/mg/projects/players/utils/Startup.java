@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 import pl.mg.projects.players.dto.AuthorizationDto;
 import pl.mg.projects.players.entities.Team;
 import pl.mg.projects.players.repositories.TeamRepository;
-import pl.mg.projects.players.services.PlayerGET.PlayerService;
-import pl.mg.projects.players.services.PlayerPOST.PlayerServicePOST;
-import pl.mg.projects.players.services.UserService;
+import pl.mg.projects.players.services.playerServices.playerGET.PlayerService;
+import pl.mg.projects.players.services.playerServices.playerPOST.PlayerServicePOST;
+import pl.mg.projects.players.services.userServices.UserService;
 
 import java.util.List;
 

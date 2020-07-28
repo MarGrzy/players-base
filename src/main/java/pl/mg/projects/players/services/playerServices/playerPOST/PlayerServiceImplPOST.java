@@ -1,4 +1,4 @@
-package pl.mg.projects.players.services.PlayerPOST;
+package pl.mg.projects.players.services.playerServices.playerPOST;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

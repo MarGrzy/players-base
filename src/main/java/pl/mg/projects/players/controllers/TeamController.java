@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.mg.projects.players.dto.TeamDto;
-import pl.mg.projects.players.services.TeamService;
+import pl.mg.projects.players.services.teamServices.TeamService;
 
 import java.util.List;
 

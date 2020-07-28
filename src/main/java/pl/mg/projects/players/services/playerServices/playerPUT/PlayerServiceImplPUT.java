@@ -1,9 +1,10 @@
-package pl.mg.projects.players.services.PlayerPUT;
+package pl.mg.projects.players.services.playerServices.playerPUT;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.mg.projects.players.entities.Player;
 import pl.mg.projects.players.entities.Team;
 import pl.mg.projects.players.repositories.PlayerRepository;
+import pl.mg.projects.players.services.exceptions.PlayerNotFoundException;
 
 import java.util.Optional;
 
@@ -17,7 +18,7 @@ public class PlayerServiceImplPUT implements PlayerServicePUT {
     }
 
     @Override
-    public boolean updatePlayer(Long playerId, Player updatedPlayer) {
+    public boolean updatePlayer(Long playerId, Player updatedPlayer) throws PlayerNotFoundException {
 
         String newPlayerName = updatedPlayer.getPlayerName();
         String newPosition = updatedPlayer.getPosition();
@@ -25,7 +26,7 @@ public class PlayerServiceImplPUT implements PlayerServicePUT {
 
         Optional<Player> playerToUpdate = playerRepository.findById(playerId);
         if (playerToUpdate.isEmpty()) {
-            return false;
+            throw new PlayerNotFoundException("Chosen player not found in the database!");
         } else {
             if (!playerToUpdate.get().getPlayerName().equals(newPlayerName)) {
                 playerToUpdate.get().setPlayerName(newPlayerName);

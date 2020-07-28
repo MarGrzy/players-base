@@ -1,4 +1,4 @@
-package pl.mg.projects.players.services;
+package pl.mg.projects.players.services.teamServices;
 
 import pl.mg.projects.players.dto.TeamDto;
 import pl.mg.projects.players.entities.Team;

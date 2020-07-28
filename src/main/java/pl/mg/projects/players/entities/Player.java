@@ -14,13 +14,11 @@ public class Player {
     private String playerName;
     private String position;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 
-    public long getId() {
-        return id;
-    }
+    public long getId() { return id; }
 
     public void setId(long id) {
         this.id = id;

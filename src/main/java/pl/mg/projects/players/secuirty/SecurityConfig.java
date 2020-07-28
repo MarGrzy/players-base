@@ -7,14 +7,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import pl.mg.projects.players.services.UserService;
+import pl.mg.projects.players.services.userServices.UserService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private UserService userService;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserService userService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public SecurityConfig(UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder) {

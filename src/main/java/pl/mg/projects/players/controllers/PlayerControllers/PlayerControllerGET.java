@@ -1,4 +1,4 @@
-package pl.mg.projects.players.controllers;
+package pl.mg.projects.players.controllers.PlayerControllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,19 +8,21 @@ import pl.mg.projects.players.dto.Direction;
 import pl.mg.projects.players.dto.PaginationDto;
 import pl.mg.projects.players.dto.PlayerDto;
 import pl.mg.projects.players.dto.SortField;
-import pl.mg.projects.players.services.PlayerGET.PlayerService;
+import pl.mg.projects.players.services.exceptions.PlayerNotFoundException;
+import pl.mg.projects.players.services.playerServices.playerGET.PlayerService;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/player")
-public class PlayerController {
+public class PlayerControllerGET {
 
     private final PlayerService playerService;
 
 
     @Autowired
-    public PlayerController(PlayerService playerService) {
+    public PlayerControllerGET(PlayerService playerService) {
         this.playerService = playerService;
     }
 
@@ -45,6 +47,14 @@ public class PlayerController {
             if (players.getContent().isEmpty()) return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
             else return ResponseEntity.status(HttpStatus.OK).body(players);
         }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PlayerDto> getOnePlayer(@PathVariable Long id) throws PlayerNotFoundException {
+        if (Objects.nonNull(id)) {
+            PlayerDto chosenPlayer = playerService.getOnePlayer(id);
+            return ResponseEntity.status(HttpStatus.OK).body(chosenPlayer);
+        } else return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 }
 

@@ -23,4 +23,6 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     Page<Player> getAllByTeamAndPlayerNameStartsWith(Team team, String playerName, Pageable pageTeam);
 
     Page<Player> getAllByTeamAndPosition(Team team, String position, Pageable pageTeam);
+
+    Player findTopByOrderByIdDesc();
 }

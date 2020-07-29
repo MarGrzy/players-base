@@ -32,8 +32,8 @@ public class PlayerServiceImplPOST implements PlayerServicePOST {
     }
 
     @Override
-    public Player createPlayer(PlayerDto newPlayerReceived) {
+    public void createPlayer(PlayerDto newPlayerReceived) {
         Player newPlayer = playerMapper.toPlayer(newPlayerReceived);
-        return playerRepository.save(newPlayer);
+        playerRepository.save(newPlayer);
     }
 }

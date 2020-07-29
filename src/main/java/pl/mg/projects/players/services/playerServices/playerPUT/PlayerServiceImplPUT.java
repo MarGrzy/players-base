@@ -1,6 +1,8 @@
 package pl.mg.projects.players.services.playerServices.playerPUT;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import pl.mg.projects.players.dto.PlayerDto;
 import pl.mg.projects.players.entities.Player;
 import pl.mg.projects.players.entities.Team;
 import pl.mg.projects.players.repositories.PlayerRepository;
@@ -8,6 +10,7 @@ import pl.mg.projects.players.services.exceptions.PlayerNotFoundException;
 
 import java.util.Optional;
 
+@Service
 public class PlayerServiceImplPUT implements PlayerServicePUT {
 
     private final PlayerRepository playerRepository;
@@ -18,25 +21,35 @@ public class PlayerServiceImplPUT implements PlayerServicePUT {
     }
 
     @Override
-    public boolean updatePlayer(Long playerId, Player updatedPlayer) throws PlayerNotFoundException {
+    public void updatePlayer(Long playerId, PlayerDto updatedPlayer) throws PlayerNotFoundException {
+
+        Optional<Player> optionalPlayerToUpdate = playerRepository.findById(playerId);
+        Player playerToUpdate;
 
         String newPlayerName = updatedPlayer.getPlayerName();
         String newPosition = updatedPlayer.getPosition();
         Team newTeam = updatedPlayer.getTeam();
 
-        Optional<Player> playerToUpdate = playerRepository.findById(playerId);
-        if (playerToUpdate.isEmpty()) {
-            throw new PlayerNotFoundException("Chosen player not found in the database!");
+        if (optionalPlayerToUpdate.isEmpty()) {
+            throw new PlayerNotFoundException("Player not found in database!");
         } else {
-            if (!playerToUpdate.get().getPlayerName().equals(newPlayerName)) {
-                playerToUpdate.get().setPlayerName(newPlayerName);
-            } else if (!playerToUpdate.get().getPosition().equals(newPosition)) {
-                playerToUpdate.get().setPosition(newPosition);
-            } else if (!playerToUpdate.get().getTeam().getTeamName().equals(newTeam.getTeamName())){
-                playerToUpdate.get().setTeam(newTeam);
-            }
-            playerRepository.save(playerToUpdate.get());
+            playerToUpdate = optionalPlayerToUpdate.get();
+
+            if (newPlayerName == null || newPlayerName.trim().equals("")) {
+                newPlayerName = playerToUpdate.getPlayerName();
+            } do { playerToUpdate.setPlayerName(newPlayerName); }
+            while ((!playerToUpdate.getPlayerName().equals(newPlayerName)));
+
+            if (newPosition == null || newPosition.trim().equals("")) {
+                newPosition = playerToUpdate.getPosition();
+            } do { playerToUpdate.setPosition(newPosition); }
+            while (!playerToUpdate.getPosition().equals(newPosition));
+
+            if (newTeam == null) {
+                newTeam = playerToUpdate.getTeam();
+            } do { playerToUpdate.setTeam(newTeam); }
+            while (!playerToUpdate.getTeam().getTeamName().equals((newTeam).getTeamName()));
         }
-        return true;
+        playerRepository.save(playerToUpdate);
     }
 }

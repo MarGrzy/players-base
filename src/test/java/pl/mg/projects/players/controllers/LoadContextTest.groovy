@@ -2,7 +2,7 @@ package pl.mg.projects.players.controllers
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import pl.mg.projects.players.controllers.PlayerControllers.PlayerControllerGET
+import pl.mg.projects.players.controllers.playerControllers.PlayerControllerGET
 import spock.lang.Specification
 
 @SpringBootTest

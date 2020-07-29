@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
-import pl.mg.projects.players.controllers.PlayerControllers.PlayerControllerGET
+import pl.mg.projects.players.controllers.playerControllers.PlayerControllerGET
 import pl.mg.projects.players.entities.Player
 import pl.mg.projects.players.entities.Team
 import pl.mg.projects.players.services.playerServices.playerGET.PlayerService

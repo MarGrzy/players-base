@@ -6,6 +6,7 @@ import pl.mg.projects.players.dto.PlayerDto;
 import pl.mg.projects.players.entities.Player;
 import pl.mg.projects.players.entities.Team;
 import pl.mg.projects.players.repositories.PlayerRepository;
+import pl.mg.projects.players.services.exceptions.WrongNewPlayerDetailsException;
 import pl.mg.projects.players.services.mappers.PlayerMapper;
 
 @Service
@@ -32,7 +33,15 @@ public class PlayerServiceImplPOST implements PlayerServicePOST {
     }
 
     @Override
-    public void createPlayer(PlayerDto newPlayerReceived) {
+    public void createPlayer(PlayerDto newPlayerReceived) throws WrongNewPlayerDetailsException {
+        String newPlayerName = newPlayerReceived.getPlayerName();
+        String newPlayerPosition = newPlayerReceived.getPosition();
+
+        if (newPlayerName == null || newPlayerName.trim().equals("")) {
+            throw new WrongNewPlayerDetailsException("Player name field cannot be empty!");
+        } else if (newPlayerPosition == null || newPlayerPosition.trim().equals("")) {
+            throw new WrongNewPlayerDetailsException("Player position field cannot be empty!");
+        }
         Player newPlayer = playerMapper.toPlayer(newPlayerReceived);
         playerRepository.save(newPlayer);
     }

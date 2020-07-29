@@ -35,12 +35,12 @@ public class PlayerServiceImplPUT implements PlayerServicePUT {
         } else {
             playerToUpdate = optionalPlayerToUpdate.get();
 
-            if (newPlayerName == null) {
+            if (newPlayerName == null || newPlayerName.trim().equals("")) {
                 newPlayerName = playerToUpdate.getPlayerName();
             } do { playerToUpdate.setPlayerName(newPlayerName); }
             while ((!playerToUpdate.getPlayerName().equals(newPlayerName)));
 
-            if (newPosition == null) {
+            if (newPosition == null || newPosition.trim().equals("")) {
                 newPosition = playerToUpdate.getPosition();
             } do { playerToUpdate.setPosition(newPosition); }
             while (!playerToUpdate.getPosition().equals(newPosition));

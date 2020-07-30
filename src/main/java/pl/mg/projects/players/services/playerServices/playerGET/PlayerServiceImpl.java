@@ -75,27 +75,6 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public PaginationDto<PlayerDto> findByPlayerName(Integer perPage, Integer page, SortField sortField, Direction direction, String playerName) {
-        Pageable pageRequest = createPageRequest(perPage, page, sortField, direction);
-        List<PlayerDto> responseDtoList = mapPlayerEntityToDto(playerRepository.findAllByPlayerNameStartsWith(playerName, pageRequest));
-        return new PaginationDto<>(responseDtoList, (long) responseDtoList.size());
-    }
-
-    @Override
-    public PaginationDto<PlayerDto> findByTeamName(Integer perPage, Integer page, SortField sortField, Direction direction, String teamName) {
-        Pageable pageRequest = createPageRequest(perPage, page, sortField, direction);
-        List<PlayerDto> responseDtoList = mapPlayerEntityToDto(playerRepository.findAllByTeam_TeamName(teamName, pageRequest));
-        return new PaginationDto<>(responseDtoList, (long) responseDtoList.size());
-    }
-
-    @Override
-    public PaginationDto<PlayerDto> findByPosition(Integer perPage, Integer page, SortField sortField, Direction direction, String position) {
-        Pageable pageRequest = createPageRequest(perPage, page, sortField, direction);
-        List<PlayerDto> responseDtoList = mapPlayerEntityToDto(playerRepository.findAllByPosition(position, pageRequest));
-        return new PaginationDto<>(responseDtoList, (long) responseDtoList.size());
-    }
-
-    @Override
     public Pageable createPageRequest(Integer perPage, Integer page, SortField sortField, Direction direction) {
         PageRequest pageRequest;
         Sort.Direction sortDirection;

@@ -1,4 +1,4 @@
-package pl.mg.projects.players.secuirty;
+package pl.mg.projects.players.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

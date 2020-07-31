@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import pl.mg.projects.players.dto.AuthorizationDto;
 import pl.mg.projects.players.repositories.UserRepository;
 import pl.mg.projects.players.entities.User;
-import pl.mg.projects.players.secuirty.AuthorityHolder;
+import pl.mg.projects.players.security.AuthorityHolder;
 
 import java.util.Optional;
 

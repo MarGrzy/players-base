@@ -1,4 +1,4 @@
-package pl.mg.projects.players.secuirty;
+package pl.mg.projects.players.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +13,8 @@ import pl.mg.projects.players.services.UserService;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private UserService userService;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserService userService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public SecurityConfig(UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder) {

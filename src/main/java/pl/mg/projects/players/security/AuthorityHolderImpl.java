@@ -1,4 +1,4 @@
-package pl.mg.projects.players.secuirty;
+package pl.mg.projects.players.security;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;

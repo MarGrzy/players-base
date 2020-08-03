@@ -35,7 +35,7 @@ public class Startup implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         authorizationDto.setUsername("Dave");
-        authorizationDto.setPassword("dave");
+        authorizationDto.setPassword("dave3");
         userService.createUser(authorizationDto);
 
         Team boston = teamRepository.getOne(2L);

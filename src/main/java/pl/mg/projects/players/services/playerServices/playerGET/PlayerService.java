@@ -1,5 +1,6 @@
 package pl.mg.projects.players.services.playerServices.playerGET;
 
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import pl.mg.projects.players.dto.*;
@@ -19,11 +20,7 @@ public interface PlayerService {
 
     List<String> getAllPlayersOfTeam(Team team);
 
-    PaginationDto<PlayerDto> findByPlayerName(Integer perPage, Integer page, SortField sortField, Direction direction, String playerName);
-
-    PaginationDto<PlayerDto> findByTeamName(Integer perPage, Integer page, SortField sortField, Direction direction, String teamName);
-
-    PaginationDto<PlayerDto> findByPosition(Integer perPage, Integer page, SortField sortField, Direction direction, String position);
+    PaginationDto<PlayerDto> findAll(Example<Player> player, Integer perPage, Integer page, SortField sortField, Direction direction);
 
     Pageable createPageRequest(Integer perPage, Integer page, SortField sortField, Direction direction);
 }

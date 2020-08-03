@@ -1,4 +1,4 @@
-package pl.mg.projects.players.controllers
+package pl.mg.projects.players.controllers.playerControllers
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.beans.factory.annotation.Autowired

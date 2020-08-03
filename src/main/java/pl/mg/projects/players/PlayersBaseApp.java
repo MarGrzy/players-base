@@ -16,7 +16,6 @@ public class PlayersBaseApp {
     public static void main(String[] args) {
         SpringApplication.run(PlayersBaseApp.class, args);
     }
-
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();

@@ -52,25 +52,19 @@ public class UserController {
 
     @PostMapping(path = "/login")
     public ResponseEntity<UserTransfer> login(@RequestBody AuthorizationDto authorizationDto) {
-        try {
-            String username = authorizationDto.getUsername();
-            String password = authorizationDto.getPassword();
+        String username = authorizationDto.getUsername();
+        String password = authorizationDto.getPassword();
 
-            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
-            Authentication authentication = this.authenticationManager.authenticate(token);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            UserDetails userDetails = this.userService.loadUserByUsername(username);
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
+        Authentication authentication = this.authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        UserDetails userDetails = this.userService.loadUserByUsername(username);
 
-            Optional<? extends GrantedAuthority> roleOptional = userDetails.getAuthorities().stream().findAny();
-            String role = roleOptional.map(Object::toString).orElse("");
+        Optional<? extends GrantedAuthority> roleOptional = userDetails.getAuthorities().stream().findAny();
+        String role = roleOptional.map(Object::toString).orElse("");
 
-            return ResponseEntity.status(HttpStatus.OK).body(new UserTransfer(userDetails.getUsername(), role,
-                    TokenUtil.createToken(userDetails), HttpStatus.OK));
-        } catch (BadCredentialsException bce) {
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new UserTransfer());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build();
-        }
+        return ResponseEntity.status(HttpStatus.OK).body(new UserTransfer(userDetails.getUsername(), role,
+                TokenUtil.createToken(userDetails), HttpStatus.OK));
 //        Optional<User> userByUsername = userService.getByUsername(authorizationDto.getUsername());
 //        if (userByUsername.isPresent()) {
 //            return ResponseEntity.status(HttpStatus.OK).build();

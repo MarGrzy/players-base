@@ -37,7 +37,7 @@ public class PlayerControllerGET {
         this.playerExampleMatcher = playerExampleMatcher;
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<PaginationDto<PlayerDto>> getAllPlayers(@RequestBody PlayerDto player,
                                                                   @RequestParam(name = "perPage") Integer perPage,
                                                                   @RequestParam(name = "page") Integer page,

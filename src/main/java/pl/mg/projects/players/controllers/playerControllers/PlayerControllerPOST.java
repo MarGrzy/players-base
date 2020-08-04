@@ -32,7 +32,7 @@ public class PlayerControllerPOST {
         this.responseMessagesBuilder = responseMessagesBuilder;
     }
 
-    @PostMapping
+    @PostMapping(path = "/new")
     public ResponseEntity<PlayerDto> createNewPlayer(@Valid @RequestBody PlayerDto newPlayer) throws WrongNewPlayerDetailsException {
         if (playerRepository.existsById(newPlayer.getId())) {
             newPlayer.setId(playerRepository.findTopByOrderByIdDesc().getId() + 1L);

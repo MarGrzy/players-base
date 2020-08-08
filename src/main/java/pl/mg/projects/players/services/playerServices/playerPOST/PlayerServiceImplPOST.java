@@ -41,6 +41,8 @@ public class PlayerServiceImplPOST implements PlayerServicePOST {
             throw new WrongNewPlayerDetailsException("Player name field cannot be empty!");
         } else if (newPlayerPosition == null || newPlayerPosition.trim().equals("")) {
             throw new WrongNewPlayerDetailsException("Player position field cannot be empty!");
+        } else if (playerRepository.getByPlayerName(newPlayerName).isPresent()) {
+            throw new WrongNewPlayerDetailsException("This player is already in database!");
         }
         Player newPlayer = playerMapper.toPlayer(newPlayerReceived);
         playerRepository.save(newPlayer);

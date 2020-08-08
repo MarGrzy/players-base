@@ -8,10 +8,13 @@ import pl.mg.projects.players.entities.Player;
 import pl.mg.projects.players.entities.Team;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PlayerRepository extends JpaRepository<Player, Long>, QueryByExampleExecutor<Player> {
 
     List<Player> getAllBy();
+
+    Optional<Player> getByPlayerName(String playerName);
 
     Page<Player> findAll(Pageable pageable);
 
